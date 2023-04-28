@@ -17,6 +17,7 @@ mongoose.connect(connection_url, { useNewUrlParser: true, useUnifiedTopology: tr
     })
 app.post('/api/postdata',async(req,res)=>{
     const {name, email, phnnumber,address}=req.body;
+    if(name&&email&&phnnumber&&address){
     const newuser = await userModel({
         name,
         email,
@@ -27,6 +28,12 @@ app.post('/api/postdata',async(req,res)=>{
     res.status(200).json({
         msg:"Data submitted successfully!"
     })
+}
+else{
+    res.status(400).json({
+        msg:"Enter all fields!"
+    })
+}
  })
  app.listen(3000, ()=>{
     console.log("server Started at port no. 3000")
