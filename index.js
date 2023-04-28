@@ -4,9 +4,11 @@
 const express= require('express');
 const mongoose = require('mongoose');
 const userModel = require('./models/userModel');
+const cors = require('cors')
 //above we create express instance
 const app= express();
 app.use(express.json())
+app.use(cors())
 // above we create express single instance which has name app
 const connection_url = 'mongodb+srv://deepanshu21153034:Cp4xVwXi3cV1PID8@cluster0.gga3l86.mongodb.net/test'
 // app.use(bodyParser.urlencoded({ extended: true }));
